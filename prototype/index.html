@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>焚天问道 · 修仙文字模拟</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- 封面 -->
+    <div id="cover">
+      <div class="seal">焚</div>
+      <h1>焚天问道</h1>
+      <div class="sub">沉浸式修仙 · 抉择人生</div>
+      <input id="nameInput" maxlength="6" placeholder="为你的主角取名（默认：林夜）">
+      <div>
+        <button class="btn" onclick="startGame()">踏上仙途</button>
+        <button class="btn ghost" id="continueBtn" style="display:none" onclick="continueGame()">继续修行</button>
+      </div>
+      <div class="tip">在关键节点做出选择，<br>道心向背，将引你走向正道 · 魔道 · 逍遥三条人生终局。</div>
+    </div>
+
+    <!-- 顶部工具 -->
+    <div id="toolbar">
+      <button onclick="save()">存档</button>
+      <button onclick="load()">读档</button>
+      <button onclick="reset()">重开</button>
+    </div>
+
+    <!-- 状态栏 -->
+    <div id="statusbar"></div>
+
+    <!-- 正文 -->
+    <div id="scene"></div>
+
+    <!-- 抽屉 -->
+    <div id="bagDrawer" class="drawer"><div id="bag"></div></div>
+    <div id="logDrawer" class="drawer"><div id="log"></div></div>
+
+    <!-- 底部页签 -->
+    <div id="tabs">
+      <button id="tabStory" class="active" onclick="switchTab('story')">剧情</button>
+      <button id="tabBag" onclick="switchTab('bag')">行囊</button>
+      <button id="tabLog" onclick="switchTab('log')">见闻</button>
+    </div>
+
+    <div id="flash"></div>
+  </div>
+
+  <script src="js/story.js"></script>
+  <script src="js/engine.js"></script>
+  <script>
+    function switchTab(t){
+      document.getElementById('bagDrawer').classList.toggle('open', t==='bag');
+      document.getElementById('logDrawer').classList.toggle('open', t==='log');
+      document.getElementById('tabStory').classList.toggle('active', t==='story');
+      document.getElementById('tabBag').classList.toggle('active', t==='bag');
+      document.getElementById('tabLog').classList.toggle('active', t==='log');
+    }
+  </script>
+</body>
+</html>
